@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emotional Fatigue Reflection</title>
+  <style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f7f4ef;
+  color: #252525;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sy-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 48px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.sy-card {
+  width: 100%;
+  max-width: 760px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 34px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.sy-eyebrow {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a6f45;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0 0 14px;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 650;
+}
+
+h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.sy-page-step {
+  display: none;
+}
+
+.sy-page-step.active {
+  display: block;
+}
+
+.sy-progress {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 14px;
+}
+
+.sy-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 14px;
+  margin: 10px 0;
+  border: 1px solid #e2ded7;
+  border-radius: 12px;
+  background: #fffdf9;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.sy-option:hover {
+  border-color: #c9b48d;
+  background: #fbf7f0;
+  transform: translateY(-1px);
+}
+
+.sy-option input {
+  margin-top: 3px;
+}
+
+.sy-actions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #7b6846;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sy-btn:hover {
+  background: #65563a;
+}
+
+.sy-btn.secondary {
+  background: #e8e1d5;
+  color: #352f26;
+}
+
+.sy-btn.secondary:hover {
+  background: #ddd2c1;
+}
+
+.sy-result-box {
+  margin-top: 22px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #fbf7f0;
+  border: 1px solid #e7dccb;
+}
+
+.sy-insight-box {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e2ded7;
+}
+
+.sy-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #777;
+}
+
+.sy-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+@media (max-width: 640px) {
+  .sy-page {
+    padding: 22px 12px;
+  }
+
+  .sy-card {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .sy-actions {
+    flex-direction: column-reverse;
+  }
+
+  .sy-btn {
+    width: 100%;
+  }
+
+  .sy-cta-row {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+  <main class="sy-page">
+    <section class="sy-card">
+      <p class="sy-eyebrow">Your Reflection</p>
+      <h1>Emotional Fatigue</h1>
+
+      <div class="sy-result-box">
+        <h3>Reflection</h3>
+          <p>Your responses suggest that you may have been carrying emotional weight beneath the surface for some time.</p>
+          <p>Many people continue meeting responsibilities while silently feeling emotionally exhausted inside.</p>
+          <p>Over time, emotional fatigue can reduce enthusiasm, connection, and the sense of ease we naturally seek.</p>
+          <p>Gentle awareness and meditation may gradually help restore emotional balance, softness, and inner steadiness.</p>
+      </div>
+
+      <div class="sy-insight-box">
+        <h3>Personalized insight</h3>
+        <div id="personalizedInsights">
+          <p>Loading your personalized insight...</p>
+        </div>
+      </div>
+
+      <p class="sy-note">
+        This reflection is for self-awareness only. It is not a medical or psychological diagnosis.
+      </p>
+
+      <div class="sy-cta-row">
+        <a class="sy-btn" href="survey.html">Retake Survey</a>
+        <a class="sy-btn secondary" href="/">Return to Home</a>
+      </div>
+    </section>
+  </main>
+  
+<script>
+  var q2Personalization = {
+    inner_calmness: "You also seem to be seeking a quieter inner state, which suggests that calmness may be especially important for you right now.",
+    better_focus: "Your answers also suggest a need for better focus and clearer attention in daily life.",
+    emotional_balance: "You may also be seeking emotional balance, not only relief from thoughts or pressure.",
+    peaceful_sleep: "Your response also suggests that rest and peaceful sleep may be part of what your system is asking for.",
+    relief_from_stress: "You also appear to be seeking relief from accumulated stress and pressure.",
+    feeling_connected_within: "Your answers also suggest a wish to feel more connected within yourself."
+  };
+
+  var q3Personalization = {
+    rarely: "Since your mind feels overloaded only rarely, small preventive pauses may help you maintain balance.",
+    sometimes: "Since your mind feels overloaded sometimes, gentle daily awareness may help prevent this from building up.",
+    often: "Since your mind feels overloaded often, creating regular moments of stillness may be especially helpful.",
+    almost_constantly: "Since your mind feels overloaded almost constantly, a gentle and consistent calming practice may be especially supportive."
+  };
+
+  var q4Personalization = {
+    fast_paced_stressful: "Your current lifestyle also appears fast-paced and stressful, which may be adding pressure to your inner state.",
+    emotionally_exhausting: "Your lifestyle also seems emotionally exhausting, which may be contributing to the need for deeper recovery.",
+    digitally_overwhelming: "Digital overwhelm may also be keeping your attention constantly active and reducing quiet mental space.",
+    constantly_busy: "Being constantly busy may be making it difficult for your mind and body to fully reset.",
+    difficult_to_disconnect: "Difficulty disconnecting may be keeping your nervous system engaged even when you want to rest."
+  };
+
+  function showPersonalizedInsights() {
+    var insightContainer = document.getElementById("personalizedInsights");
+    if (!insightContainer) return;
+
+    var stored = localStorage.getItem("selfDiscoverySurveyAnswers");
+    if (!stored) {
+      insightContainer.innerHTML = "<p>You can complete the survey to receive a more personalized reflection.</p>";
+      return;
+    }
+
+    var answers = JSON.parse(stored);
+    var insights = [];
+
+    (answers.q2 || []).slice(0, 2).forEach(function(answer) {
+      if (q2Personalization[answer]) insights.push(q2Personalization[answer]);
+    });
+
+    if (answers.q3 && q3Personalization[answers.q3]) {
+      insights.push(q3Personalization[answers.q3]);
+    }
+
+    (answers.q4 || []).slice(0, 2).forEach(function(answer) {
+      if (q4Personalization[answer]) insights.push(q4Personalization[answer]);
+    });
+
+    if (insights.length === 0) {
+      insightContainer.innerHTML = "<p>Your primary reflection is shown above. You may retake the survey anytime for a more personalized result.</p>";
+      return;
+    }
+
+    var html = "";
+    insights.forEach(function(insight) {
+      html += "<p>" + insight + "</p>";
+    });
+
+    insightContainer.innerHTML = html;
+  }
+
+  document.addEventListener("DOMContentLoaded", showPersonalizedInsights);
+</script>
+
+</body>
+</html>

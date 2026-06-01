@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Self Discovery Survey</title>
+  <style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f7f4ef;
+  color: #252525;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sy-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 48px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.sy-card {
+  width: 100%;
+  max-width: 760px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 34px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.sy-eyebrow {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a6f45;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0 0 14px;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 650;
+}
+
+h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.sy-page-step {
+  display: none;
+}
+
+.sy-page-step.active {
+  display: block;
+}
+
+.sy-progress {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 14px;
+}
+
+.sy-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 14px;
+  margin: 10px 0;
+  border: 1px solid #e2ded7;
+  border-radius: 12px;
+  background: #fffdf9;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.sy-option:hover {
+  border-color: #c9b48d;
+  background: #fbf7f0;
+  transform: translateY(-1px);
+}
+
+.sy-option input {
+  margin-top: 3px;
+}
+
+.sy-actions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #7b6846;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sy-btn:hover {
+  background: #65563a;
+}
+
+.sy-btn.secondary {
+  background: #e8e1d5;
+  color: #352f26;
+}
+
+.sy-btn.secondary:hover {
+  background: #ddd2c1;
+}
+
+.sy-result-box {
+  margin-top: 22px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #fbf7f0;
+  border: 1px solid #e7dccb;
+}
+
+.sy-insight-box {
+  margin-top: 22px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e2ded7;
+}
+
+.sy-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #777;
+}
+
+.sy-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+@media (max-width: 640px) {
+  .sy-page {
+    padding: 22px 12px;
+  }
+
+  .sy-card {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .sy-actions {
+    flex-direction: column-reverse;
+  }
+
+  .sy-btn {
+    width: 100%;
+  }
+
+  .sy-cta-row {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+  <main class="sy-page">
+    <section class="sy-card">
+      <div id="intro" class="sy-page-step active">
+        <p class="sy-eyebrow">Self Discovery</p>
+        <h1>A gentle check-in for your inner state</h1>
+        <p>
+          Answer four simple reflections. Your first answer identifies the main reflection,
+          and your remaining answers personalize the result page.
+        </p>
+        <button class="sy-btn" type="button" onclick="startSurvey()">Start Survey</button>
+      </div>
+
+      <form id="surveyForm">
+        <div class="sy-page-step question-step" data-step="0">
+          <p class="sy-progress">Question 1 of 4</p>
+          <h2>1. What feels most difficult lately?</h2>
+          <label class="sy-option"><input type="radio" name="q1" value="mental-overload" /> Too many thoughts</label>
+          <label class="sy-option"><input type="radio" name="q1" value="emotional-fatigue" /> Emotional tiredness</label>
+          <label class="sy-option"><input type="radio" name="q1" value="nervous-system-overactivation" /> Difficulty slowing down</label>
+          <label class="sy-option"><input type="radio" name="q1" value="stress-pressure" /> Constant pressure</label>
+          <label class="sy-option"><input type="radio" name="q1" value="inner-disconnection" /> Feeling disconnected</label>
+          <label class="sy-option"><input type="radio" name="q1" value="restlessness-tension" /> Trouble relaxing</label>
+          <div class="sy-actions">
+            <button class="sy-btn secondary" type="button" onclick="goBack()">Back</button>
+            <button class="sy-btn" type="button" onclick="goNext()">Next</button>
+          </div>
+        </div>
+
+        <div class="sy-page-step question-step" data-step="1">
+          <p class="sy-progress">Question 2 of 4</p>
+          <h2>2. What are you seeking most right now?</h2>
+          <label class="sy-option"><input type="checkbox" name="q2" value="inner_calmness" /> Inner Calmness</label>
+          <label class="sy-option"><input type="checkbox" name="q2" value="better_focus" /> Better focus</label>
+          <label class="sy-option"><input type="checkbox" name="q2" value="emotional_balance" /> Emotional balance</label>
+          <label class="sy-option"><input type="checkbox" name="q2" value="peaceful_sleep" /> Peaceful sleep</label>
+          <label class="sy-option"><input type="checkbox" name="q2" value="relief_from_stress" /> Relief from Stress</label>
+          <label class="sy-option"><input type="checkbox" name="q2" value="feeling_connected_within" /> Feeling connected within</label>
+          <div class="sy-actions">
+            <button class="sy-btn secondary" type="button" onclick="goBack()">Back</button>
+            <button class="sy-btn" type="button" onclick="goNext()">Next</button>
+          </div>
+        </div>
+
+        <div class="sy-page-step question-step" data-step="2">
+          <p class="sy-progress">Question 3 of 4</p>
+          <h2>3. How often does your mind feel overloaded?</h2>
+          <label class="sy-option"><input type="radio" name="q3" value="rarely" /> Rarely</label>
+          <label class="sy-option"><input type="radio" name="q3" value="sometimes" /> Sometimes</label>
+          <label class="sy-option"><input type="radio" name="q3" value="often" /> Often</label>
+          <label class="sy-option"><input type="radio" name="q3" value="almost_constantly" /> Almost constantly</label>
+          <div class="sy-actions">
+            <button class="sy-btn secondary" type="button" onclick="goBack()">Back</button>
+            <button class="sy-btn" type="button" onclick="goNext()">Next</button>
+          </div>
+        </div>
+
+        <div class="sy-page-step question-step" data-step="3">
+          <p class="sy-progress">Question 4 of 4</p>
+          <h2>4. Which best describes your current lifestyle?</h2>
+          <label class="sy-option"><input type="checkbox" name="q4" value="fast_paced_stressful" /> Fast-paced and stressful</label>
+          <label class="sy-option"><input type="checkbox" name="q4" value="emotionally_exhausting" /> Emotionally exhausting</label>
+          <label class="sy-option"><input type="checkbox" name="q4" value="digitally_overwhelming" /> Digitally overwhelming</label>
+          <label class="sy-option"><input type="checkbox" name="q4" value="constantly_busy" /> Constantly busy</label>
+          <label class="sy-option"><input type="checkbox" name="q4" value="difficult_to_disconnect" /> Difficult to disconnect</label>
+          <div class="sy-actions">
+            <button class="sy-btn secondary" type="button" onclick="goBack()">Back</button>
+            <button class="sy-btn" type="button" onclick="submitSurvey()">See My Reflection</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    var currentStep = -1;
+
+    function hideAllSteps() {
+      var steps = document.querySelectorAll(".sy-page-step");
+      steps.forEach(function(step) {
+        step.classList.remove("active");
+      });
+    }
+
+    function showStep(index) {
+      hideAllSteps();
+      var questionSteps = document.querySelectorAll(".question-step");
+      questionSteps[index].classList.add("active");
+      currentStep = index;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function startSurvey() {
+      showStep(0);
+    }
+
+    function goNext() {
+      if (currentStep === 0 && !getSelectedValues("q1")[0]) {
+        alert("Please select one option for Question 1.");
+        return;
+      }
+
+      if (currentStep === 2 && !getSelectedValues("q3")[0]) {
+        alert("Please select one option for Question 3.");
+        return;
+      }
+
+      if (currentStep < 3) {
+        showStep(currentStep + 1);
+      }
+    }
+
+    function goBack() {
+      if (currentStep === 0) {
+        hideAllSteps();
+        document.getElementById("intro").classList.add("active");
+        currentStep = -1;
+      } else if (currentStep > 0) {
+        showStep(currentStep - 1);
+      }
+    }
+
+    function getSelectedValues(name) {
+      var selected = document.querySelectorAll("input[name='" + name + "']:checked");
+      return Array.prototype.slice.call(selected).map(function(input) {
+        return input.value;
+      });
+    }
+
+    function submitSurvey() {
+      var outcome = getSelectedValues("q1")[0];
+      var q3 = getSelectedValues("q3")[0];
+
+      if (!outcome) {
+        alert("Please answer Question 1 before submitting.");
+        showStep(0);
+        return;
+      }
+
+      if (!q3) {
+        alert("Please answer Question 3 before submitting.");
+        showStep(2);
+        return;
+      }
+
+      var surveyAnswers = {
+        outcome: outcome,
+        q2: getSelectedValues("q2"),
+        q3: q3,
+        q4: getSelectedValues("q4"),
+        submittedAt: new Date().toISOString()
+      };
+
+      localStorage.setItem("selfDiscoverySurveyAnswers", JSON.stringify(surveyAnswers));
+
+      window.location.href = outcome + ".html";
+    }
+  </script>
+</body>
+</html>
